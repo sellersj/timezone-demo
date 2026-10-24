@@ -8,8 +8,12 @@ public class ApplicationTest {
 
     @Test
     void getTimezoneInfo() {
+        Application.printOsVersion();
+
         String result = Application.getTimezoneInfo();
         assertNotNull(result);
+
+        System.out.println("Timezone in " + this.getClass() + " is: " + result);
     }
 
 }

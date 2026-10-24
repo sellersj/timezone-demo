@@ -13,7 +13,7 @@ public class Application {
         return ZoneRulesProvider.getVersions("UTC").lastEntry().getKey();
     }
 
-    private static void printOsVersion() {
+    public static void printOsVersion() {
         String osName = System.getProperty("os.name");
         String osVersion = System.getProperty("os.version");
         String osArch = System.getProperty("os.arch");
