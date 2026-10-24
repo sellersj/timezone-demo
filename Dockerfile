@@ -6,7 +6,7 @@ FROM docker.io/jboss/wildfly:25.0.0.Final
 COPY target/*.jar app.jar
 
 # update the timezone
-RUN dnf update tzdata
+RUN yum update tzdata
 
 # set the jar to run on launch
 ENTRYPOINT ["java", "-jar", "app.jar"]
