@@ -6,7 +6,8 @@ FROM docker.io/jboss/wildfly:25.0.0.Final
 COPY target/*.jar app.jar
 
 # update the timezone
-RUN yum update tzdata
+# can't update the yum command since the base image is EoL so the repos no longer work
+# RUN yum update tzdata
 
 # set the jar to run on launch
 ENTRYPOINT ["java", "-jar", "app.jar"]
