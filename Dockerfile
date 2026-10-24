@@ -28,7 +28,7 @@ ENV TZ=America/Toronto
 # Download, extract, compile, and install tzdata from IANA
 RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
-    wget https://iana.org{TZDATA_VERSION}.tar.gz && \
+    wget https://data.iana.org/time-zones/releases/tzdata${TZDATA_VERSION}.tar.gz && \
     tar -zxvf tzdata${TZDATA_VERSION}.tar.gz && \
     # Compile the files into the system zoneinfo directory
     zic -d /usr/share/zoneinfo africa antarctica asia australasia europe northamerica southamerica pacificnew etcetera backward && \
