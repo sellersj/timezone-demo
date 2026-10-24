@@ -46,6 +46,8 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
+        cache-from: type=gha # Pulls cache layers from GitHub Actions Cache API
+        cache-to: type=gha,mode=max # Exports all layers (including intermediate ones)
         # Replace 'your-dockerhub-username/your-repo-name' with your actual repository information
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/timezone-demo:latest
