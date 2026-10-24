@@ -29,10 +29,8 @@ ENV TZ=America/Toronto
 RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
     wget https://data.iana.org/time-zones/releases/tzdata${TZDATA_VERSION}.tar.gz && \
-    tar -zxvf tzdata${TZDATA_VERSION}.tar.gz 
-    #&& \
-    # Compile the files into the system zoneinfo directory
-    #zic -d /usr/share/zoneinfo africa antarctica asia australasia europe northamerica southamerica pacificnew etcetera backward && \
+    tar -zxvf tzdata${TZDATA_VERSION}.tar.gz && \
+    zic -d /usr/share/zoneinfo africa antarctica asia australasia europe northamerica southamerica pacificnew etcetera backward
     # Set the default system timezone
    # ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime && \
   #  echo "${TZ}" > /etc/timezone && \
