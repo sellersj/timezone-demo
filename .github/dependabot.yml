@@ -6,6 +6,9 @@ updates:
     schedule:
       interval: "daily" # Can be daily, weekly, or monthly
     open-pull-requests-limit: 10
+    ignore:
+    - dependency-name: "org.junit.jupiter:*" # or "junit:junit" / wildcard for JUnit 6
+      versions: ["6.x", ">=6.0"]
 
   # 2. Optional: Keep your GitHub Actions workflows up to date
   - package-ecosystem: "github-actions"
