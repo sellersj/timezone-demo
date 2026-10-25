@@ -9,10 +9,6 @@ COPY target/*.jar app.jar
 # can't update the yum command since the base image is EoL so the repos no longer work
 # RUN yum update tzdata
 
-# Install development tools needed to build tzdata
-RUN yum install -y make gcc wget tar && \
-    yum clean all
-
 # Download, extract, compile, and install tzdata from IANA
 RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
