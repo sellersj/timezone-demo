@@ -17,11 +17,13 @@ public class Application {
         String osName = System.getProperty("os.name");
         String osVersion = System.getProperty("os.version");
         String osArch = System.getProperty("os.arch");
+        String vendor = System.getProperty("java.vendor");
 
         System.out.println("OS Name: " + osName);
         System.out.println("OS Version: " + osVersion);
         System.out.println("OS Architecture: " + osArch);
         System.out.println("Java version: " + System.getProperty("java.version"));
+        System.out.println("Java Vendor: " + vendor);
     }
 
 }
