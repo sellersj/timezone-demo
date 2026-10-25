@@ -18,8 +18,5 @@ RUN mkdir /tmp/tzdata && \
     $JAVA_HOME/bin/java -jar ziupdater*.jar -l file:///tmp/tzdata/tzdata-latest.tar.gz && \
     rm -rf /tmp/tzdata
 
-# Verify the timezone installation
-RUN date
-
 # set the jar to run on launch
 ENTRYPOINT ["java", "-jar", "app.jar"]
