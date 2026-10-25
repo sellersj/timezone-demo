@@ -14,7 +14,9 @@ RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
     curl -sS -Ol https://cdn.azul.com/tools/ziupdater1.1.3.1-jse8+7-any_jvm.tar.gz && \
     tar -xzvf ziupdater*.tar.gz && \
-    $JAVA_HOME/bin/java -jar ziupdater*.jar -l https://data.iana.org/time-zones/tzdata-latest.tar.gz && \
+    curl -sS -Ol https://data.iana.org/time-zones/tzdata-latest.tar.gz && \
+    ls -la . && ls -la /tmp/tzdata && pwd && \
+    $JAVA_HOME/bin/java -jar ziupdater*.jar -l file://tmp/tzdata/tzdata-latest.tar.gz && \
     rm -rf /tmp/tzdata
 
 # Verify the timezone installation
