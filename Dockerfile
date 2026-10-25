@@ -24,9 +24,9 @@ RUN yum install -y make gcc wget tar && \
 # Download, extract, compile, and install tzdata from IANA
 RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
-    curl -Ol https://cdn.azul.com/tools/ziupdater1.1.3.1-jse8+7-any_jvm.tar.gz && \
+    curl --no-progress-meter -Ol https://cdn.azul.com/tools/ziupdater1.1.3.1-jse8+7-any_jvm.tar.gz && \
     tar -xzvf ziupdater*.tar.gz && \
-    wget https://data.iana.org/time-zones/tzdata-latest.tar.gz && \
+    curl --no-progress-meter -Ol https://data.iana.org/time-zones/tzdata-latest.tar.gz && \
     $JAVA_HOME/bin/java -jar ziupdater.jar -l file://./tzdata-latest.tar.gz
 
 # Verify the timezone installation
