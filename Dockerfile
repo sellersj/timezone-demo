@@ -9,6 +9,9 @@ COPY target/*.jar app.jar
 # can't update the yum command since the base image is EoL so the repos no longer work
 # RUN yum update tzdata
 
+# this below block does not seem to work for centos / redhat images since they manage
+# the timezone differently.
+
 # Download, extract, compile, and install tzdata from IANA
 RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
