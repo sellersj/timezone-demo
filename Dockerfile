@@ -9,14 +9,6 @@ COPY target/*.jar app.jar
 # can't update the yum command since the base image is EoL so the repos no longer work
 # RUN yum update tzdata
 
-# download and compile from scratch the tzdata
-FROM centos:7
-
-# Fix CentOS 7 repositories to point to the Vault since base repos are EOL
-RUN sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/CentOS-*.repo && \
-    sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/CentOS-*.repo && \
-    sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/CentOS-*.repo
-
 # Install development tools needed to build tzdata
 RUN yum install -y make gcc wget tar && \
     yum clean all
