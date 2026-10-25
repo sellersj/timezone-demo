@@ -21,24 +21,13 @@ RUN sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/CentOS-*.repo
 RUN yum install -y make gcc wget tar && \
     yum clean all
 
-# Define the target tzdata version
-ENV TZDATA_VERSION=2026e
-ENV TZ=America/Toronto
-
 # Download, extract, compile, and install tzdata from IANA
 RUN mkdir /tmp/tzdata && \
     cd /tmp/tzdata && \
-    wget https://data.iana.org/time-zones/tzcode-latest.tar.gz && \
+    curl -Ol https://cdn.azul.com/tools/ziupdater1.1.3.1-jse8+7-any_jvm.tar.gz && \
+    tar -xzvf ziupdater*.tar.gz && \
     wget https://data.iana.org/time-zones/tzdata-latest.tar.gz && \
-    tar -zxvf tzcode-latest.tar.gz && \
-    tar -zxvf tzdata-latest.tar.gz && \
-    make && \
-    ./zic -d /usr/share/zoneinfo africa antarctica asia australasia europe northamerica southamerica pacificnew etcetera backward
-    # Set the default system timezone
-   # ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime && \
-  #  echo "${TZ}" > /etc/timezone && \
-    # Clean up build files
- #   cd / && rm -rf /tmp/tzdata
+    java -jar ziupdater.jar -l file://./tzdata-latest.tar.gz
 
 # Verify the timezone installation
 RUN date
